@@ -1,0 +1,72 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void lis(int *a, int n, int i, int *dp) // top-down like recursion
+{
+    if (i == n)
+    {
+        return;
+    }
+
+    int ans = 1;
+    for (int j = i-1; j >= 0; --j)
+    {
+        if (a[j] < a[i])
+        {
+            ans = max(dp[j] + 1, ans);
+        }
+    }
+
+    dp[i] = ans;
+    lis(a, n, i+1, dp);
+}
+
+int main()
+{
+    int a[] = {10,9,3,5,4,11,7,8};
+    int n = sizeof(a)/sizeof(int);
+
+    int dp[100];
+
+    // Initialize dp
+    for (int i = 0; i < n; ++i)
+    {
+        dp[i] = 1;
+    }
+
+    // Bottom-up version
+    for (int i = 1; i < n; ++i)
+    {
+        for (int j = i-1; j >= 0; --j)
+        {
+            if (a[j] < a[i])
+            {
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+        }
+    }
+
+    // print dp array
+    int ans = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        cout << dp[i] << " ";
+        ans = max(ans, dp[i]); // FIXED
+    }
+    cout << endl;
+
+    cout << "LIS length = " << ans << endl;
+
+    // Top-down call (optional to compare)
+    int dp2[100];
+    for (int i = 0; i < n; ++i) dp2[i] = 1;
+
+    lis(a, n, 1, dp2);
+
+    cout << "Top-down DP result array: ";
+    for (int i = 0; i < n; ++i) cout << dp2[i] << " ";
+    cout << endl;
+
+    return 0;
+}
