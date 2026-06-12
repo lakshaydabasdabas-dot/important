@@ -1,20 +1,19 @@
-# Important
+# Important Snippets & Tools
 
 ## Project Overview
-A collection of essential snippets, tools, and configurations critical for development workflows.
+A curated repository containing essential high-performance C++ snippets, tools, and technical configurations vital for rapid development and system testing.
 
 ## Tech Stack
 *   **Language**: C++
-*   **Key Libraries**: N/A
-*   **Infrastructure**: Systems-level development environment.
+*   **Platform**: Linux systems-level development
 
 ## Architecture & Design Choices
-- **Design Principles**: Modular, efficient, high-performance.
+- **Efficiency-First**: Focused on high-performance algorithms and system-level primitives.
+- **Modularity**: Small, single-purpose utilities for maximum reuse.
 
 ## Setup Instructions
 ```bash
-# Clone the repository
 git clone https://github.com/lakshaydabasdabas-dot/important.git
-# Build
-g++ main.cpp -o app
+g++ -o app main.cpp
+./app
 ```
